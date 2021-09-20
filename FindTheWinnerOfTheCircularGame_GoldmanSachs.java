@@ -17,14 +17,11 @@ public class FindTheWinnerOfTheCircularGame_GoldmanSachs {
         }
 
         k -= 1;
-        int counter = k;
+        int counter = 0;
         while(list.size() > 1){
-            if(list.size() > counter){
-                list.remove(counter);
-                counter += k;
-            } else {
-                counter -= list.size();
-            }
+            counter = (counter + k) % list.size();
+            list.remove(counter);
+
         }
 
         return list.size() == 1 ? list.get(0) : -1;
