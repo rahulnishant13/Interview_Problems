@@ -2,13 +2,13 @@ package Interviews;
 
 public class CreateBSTAndFindMaxValueBetweenTwoNumbers_Adobe {
     public static void main(String[] args) {
-        int [] arr = {18, 36, 9, 6, 12, 10, 1, 8, 14};
+        int [] arr = {18, 36, 9, 6, 12, 10, 1, 8, 14, 19, 39, 34};
 
         Node node = createBST(arr);
         printBST(node);
         System.out.println();
 
-        System.out.println(indMaxValueBetweenTwoNumbers(1, 10, node));
+        System.out.println(indMaxValueBetweenTwoNumbers(1, 34, node));
     }
 
     private static int indMaxValueBetweenTwoNumbers(int l, int k, Node node) {
