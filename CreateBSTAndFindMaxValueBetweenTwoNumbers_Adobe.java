@@ -1,11 +1,38 @@
 package Interviews;
 
-public class CreateBST_Adobe {
+public class CreateBSTAndFindMaxValueBetweenTwoNumbers_Adobe {
     public static void main(String[] args) {
-        int [] arr = {10, 8, 12, 6, 9, 20};
+        int [] arr = {18, 36, 9, 6, 12, 10, 1, 8, 14};
 
         Node node = createBST(arr);
         printBST(node);
+        System.out.println();
+
+        System.out.println(indMaxValueBetweenTwoNumbers(1, 10, node));
+    }
+
+    private static int indMaxValueBetweenTwoNumbers(int l, int k, Node node) {
+        while((node.data > l && node.data > k) || (node.data < l && node.data < k)){
+            if ((node.data > l && node.data > k))
+                node = node.left;
+            else if((node.data < l && node.data < k))
+                node = node.right;
+        }
+        return Math.max(getMax(node, l), getMax(node, k));
+    }
+
+    private static int getMax(Node node, int data){
+        int max = -1;
+        while(node.data != data){
+            max = Math.max(max, node.data);
+            if(data > node.data){
+                node = node.right;
+            }
+            else {
+                node = node.left;
+            }
+        }
+        return Math.max(max, data);
     }
 
     private static void printBST(Node node) {
