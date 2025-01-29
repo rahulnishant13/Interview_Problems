@@ -1,5 +1,8 @@
 package Interviews;
 
+// Given a sorted array A of unique numbers, find the K-th missing number starting from the leftmost number of the array.
+
+
 public class MissingElementInSortedArray_InterviewKickstart {
     public static void main (String[] args) {
         int [] nums = {4, 6, 7, 9, 11, 12,13, 15};
