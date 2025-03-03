@@ -1,13 +1,20 @@
 /**
-Being asked in ThoughtSpot PS DS round
-there is a matrix of n*m, need to find minimum distance to reach to (n-1, m-1) stating from (0,0).
-Condition steps can be take left, right, up, down and each step count plus 1.
-And matrix contain few similar numbers other than zero which act as portal and can moved form one to another using one step.
+Problem:
+You are given an n×m matrix where each element is either a zero or a positive integer representing a portal.
+The goal is to find the minimum distance from the top-left corner (0,0) to the bottom-right corner (n-1, m-1).
+You can move in four directions (up, down, left, right), and each step you take counts as 1 in the distance.
+However, if you land on a cell containing a portal number (other than 0), you can "teleport" to another cell with the same portal number in one step.
+Requirements:
+Start from the cell (0,0) and reach (n-1,m-1).
+Movement is allowed in the four cardinal directions (up, down, left, right).
+Each step taken adds 1 to the total distance.
+Cells containing the same positive integer (portals) allow teleportation between them, and it counts as just 1 step.
+Find the minimum distance to reach the destination.
 [[0,3,0,0],
- [0,0,0,0],
- [0,0,3,0],
- [4,0,0,0],
- [0,0,4,0]]
+ [0,0,0,0],
+ [0,0,3,0],
+ [4,0,0,0],
+ [0,0,4,0]]
 **/
 
 import java.util.*;
