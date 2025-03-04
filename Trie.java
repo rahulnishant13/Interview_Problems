@@ -1,4 +1,4 @@
-// implement Trie insert search and prefix search
+// implement Trie insert search and prefix search count word having prefix
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,12 +57,39 @@ class Trie {
         return true;
     }
 
+    private int countWordsWithPrefix(String input) {
+        TrieNode curr = root;
+        for(char ch : input.toCharArray()) {
+            if(!curr.children.containsKey(ch)) {
+                return 0;
+            }
+            curr = curr.children.get(ch);
+        }
+
+        return countWords(curr);
+    }
+
+    private int countWords(TrieNode curr) {
+        int count = 0;
+        if(curr.endOfWord) {
+            count++;
+        }
+
+        for(TrieNode node: curr.children.values()) {
+            count += countWords(node);
+        }
+
+        return count;
+    }
+
 
     public static void main(String[] args) {
         Trie trie = new Trie();
         trie.insert("cat");
         trie.insert("car");
         trie.insert("dog");
+        trie.insert("cart");
+        trie.insert("can");
 
         System.out.println("Search 'cat': " + trie.search("cat")); // true
         System.out.println("Search 'car': " + trie.search("car")); // true
@@ -71,5 +98,10 @@ class Trie {
         System.out.println("startsWith 'ca': " + trie.startsWith("ca")); // true
         System.out.println("startsWith 'do': " + trie.startsWith("do")); // true
         System.out.println("startsWith 'ze': " + trie.startsWith("ze")); // false
+
+        System.out.println("Words with prefix 'ca': " + trie.countWordsWithPrefix("ca")); // 3 (cat, car, cart)
+        System.out.println("Words with prefix 'do': " + trie.countWordsWithPrefix("do")); // 1 (dog)
+        System.out.println("Words with prefix 'c': " + trie.countWordsWithPrefix("c")); // 3 (cat, car, cart, can)
+        System.out.println("Words with prefix 'z': " + trie.countWordsWithPrefix("z")); // 0
     }
 }
